@@ -4,6 +4,7 @@ using System.Data.Common;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class PlayerScr : MonoBehaviour
 {
@@ -171,15 +172,14 @@ public class PlayerScr : MonoBehaviour
     }
     IEnumerator DoRoll()
     {
-       boxCollider2D.enabled = false;
-        rb.gravityScale = 0;
+        Physics2D.IgnoreLayerCollision(6,8,true);
         isRoll = true;
         CanRoll = false;
         rb.velocity = new Vector2(transform.localScale.x *_rollPower, 0);
         yield return new WaitForSeconds(_rollTime);
-        rb.gravityScale = 1;
         isRoll = false;
         boxCollider2D.enabled = true;
+        Physics2D.IgnoreLayerCollision(6,8,false);
         yield return new WaitForSeconds(_rollKD);
         CanRoll = true;
     }
