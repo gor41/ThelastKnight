@@ -11,7 +11,7 @@ public class BossSpell : MonoBehaviour
     }
     void Update()
     {
-        Destroy(gameObject,1.3f);
+        Destroy(gameObject,2f);
     }
     IEnumerator SpellIsAttack()
     {
@@ -19,6 +19,9 @@ public class BossSpell : MonoBehaviour
         boxCollider2D.enabled = true;
         yield return new WaitForSeconds(0.1f);
         boxCollider2D.enabled = false;
+         var startScale = transform.localScale;
+        var scaleMin = new Vector3(0,0,0);
+        transform.localScale = Vector3.Lerp(startScale,scaleMin,0.1f);
 
     }
 }

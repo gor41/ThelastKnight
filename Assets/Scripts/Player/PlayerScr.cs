@@ -20,6 +20,7 @@ public class PlayerScr : MonoBehaviour
     public GameObject AttackHitBox;
     private bool isGrounded = false;
     private bool isAttacked = false;
+    private bool isAttackAndNoRoll = false;
     private bool faceRight = true;
     private bool LockPos=false;  
     [Header("Dash Settings")]
@@ -99,7 +100,7 @@ public class PlayerScr : MonoBehaviour
     }
     private void OnAttack()
     {
-        if(Input.GetMouseButtonDown(0) && isAttacked == false && isGrounded == true && isRoll == false)
+        if(Input.GetMouseButtonDown(0) && isAttacked == false && isGrounded == true && isRoll == false && HealthPlayer.Instance.isTakeHit == false)
         {
            animator.SetBool("isAttack",true);
            StartCoroutine(DoAttack()); 
@@ -114,7 +115,7 @@ public class PlayerScr : MonoBehaviour
     }
     private void Roll()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift) && isGrounded == true && CanRoll == true)
+        if(Input.GetKeyDown(KeyCode.LeftShift) && isGrounded == true && CanRoll == true && HealthPlayer.Instance.isTakeHit == false && isAttackAndNoRoll == false)
         {
             StartCoroutine(DoRoll());
             animator.SetBool("isRoll", true);
@@ -150,7 +151,11 @@ public class PlayerScr : MonoBehaviour
     IEnumerator DoAttack()
     {
         AttackHitBox.SetActive(true);
+        isAttackAndNoRoll = true;
+        CanRoll = false;
         yield return new WaitForSeconds(0.25f);
+        CanRoll = true;
+        isAttackAndNoRoll = false;
         AttackHitBox.SetActive(false);
         
     }
@@ -178,7 +183,6 @@ public class PlayerScr : MonoBehaviour
         rb.velocity = new Vector2(transform.localScale.x *_rollPower, 0);
         yield return new WaitForSeconds(_rollTime);
         isRoll = false;
-        boxCollider2D.enabled = true;
         Physics2D.IgnoreLayerCollision(6,8,false);
         yield return new WaitForSeconds(_rollKD);
         CanRoll = true;

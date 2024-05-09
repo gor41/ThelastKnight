@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Callbacks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +9,13 @@ public class HealthPlayer : MonoBehaviour
     public static HealthPlayer Instance { get; private set;}
     [SerializeField] public float _currentHealthPlayer = 100f;
     [SerializeField] private float _maxCurrentHealthPlayer = 100f;
+    public TextMeshProUGUI TextHp;
+    public GameObject PanelGameOver;
     public UnityEngine.UI.Image image;
     private Animator animator;
     private BoxCollider2D collider2d;
     private Rigidbody2D rigidbody2;
+    public bool isTakeHit = false;
     private void Awake() 
     {
         Instance = this;
@@ -27,6 +29,7 @@ public class HealthPlayer : MonoBehaviour
     {
         DeadPlayer();
         image.fillAmount = _currentHealthPlayer/_maxCurrentHealthPlayer;
+        TextHp.text = _currentHealthPlayer.ToString()+ "/" +_maxCurrentHealthPlayer.ToString();
     }
     private void DeadPlayer()
     {
@@ -47,12 +50,12 @@ public class HealthPlayer : MonoBehaviour
     IEnumerator StopMoveOnDamage()
     {
         Physics2D.IgnoreLayerCollision(6,8,true);
-        PlayerScr.Instance.rb.gravityScale = 0;
         PlayerScr.Instance._moveSpeed = 0;
+        isTakeHit = true;
         yield return new WaitForSeconds(0.3f);
+        isTakeHit = false;
         PlayerScr.Instance._moveSpeed = 5;
         Physics2D.IgnoreLayerCollision(6,8,false);
-        PlayerScr.Instance.rb.gravityScale = 1;
     }
     IEnumerator IsDead()
     {
@@ -61,6 +64,7 @@ public class HealthPlayer : MonoBehaviour
         rigidbody2.bodyType = RigidbodyType2D.Static;
         collider2d.enabled = false;
         animator.SetTrigger("IsDead");
+        PanelGameOver.SetActive(true);
         yield return new WaitForSeconds(1f);
     }
     
