@@ -1,7 +1,5 @@
 using System.Collections;
 using UnityEngine;
-
-
 public class BossScr : MonoBehaviour
 {
     [Header("Objects")]
@@ -30,9 +28,8 @@ public class BossScr : MonoBehaviour
     private bool isAttsckBoss = true;
     private bool isCastSpell = false;
     private bool isWalkToPlayr = true;
-    // Start is called before the first frame update
-    void Start()
-    {
+
+    private void Awake() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

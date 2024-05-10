@@ -11,6 +11,7 @@ public class CutSceneController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playableDirector.Play();
+            Destroy(gameObject);
         }
     }
 }

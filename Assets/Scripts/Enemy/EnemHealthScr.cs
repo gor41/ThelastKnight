@@ -16,7 +16,7 @@ public class EnemHealthScr : MonoBehaviour
     {
         _currentEnemyHealth -= damage;
     }
-    private void Update() 
+    private void LateUpdate() 
     {
         if(_currentEnemyHealth <= 0)
         {

@@ -42,7 +42,6 @@ public class HealthPlayer : MonoBehaviour
     }
     public void TakeHit(int damage)
     {
-        animator.Play("HeroKnight_Hurt");
         StartCoroutine(StopMoveOnDamage());
         _currentHealthPlayer -= damage;
         image.fillAmount = _currentHealthPlayer/_maxCurrentHealthPlayer;
@@ -52,8 +51,10 @@ public class HealthPlayer : MonoBehaviour
         Physics2D.IgnoreLayerCollision(6,8,true);
         PlayerScr.Instance._moveSpeed = 0;
         isTakeHit = true;
+        animator.SetBool("isTakeHit",true);
         yield return new WaitForSeconds(0.3f);
         isTakeHit = false;
+        animator.SetBool("isTakeHit",false);
         PlayerScr.Instance._moveSpeed = 5;
         Physics2D.IgnoreLayerCollision(6,8,false);
     }

@@ -10,9 +10,7 @@ public class BossHpBar : MonoBehaviour
     public PlayableDirector EndCutScene;
     public UnityEngine.UI.Image HPbar;
     public GameObject DeadBoss;
-    public AudioSource BossMusic;
-    public PlayerScr playerScr;
-
+    public GameObject BossMusic;
     private void Start() 
     {
         enemHealthScr = GetComponent<EnemHealthScr>();
@@ -26,11 +24,14 @@ public class BossHpBar : MonoBehaviour
     {
         if(enemHealthScr._currentEnemyHealth <= 0)
         {
-            EndCutScene.Play();
-            Instantiate(DeadBoss,transform.position, Quaternion.identity);
-            playerScr.enabled = false;
-            BossMusic.Stop();
+            StartCoroutine(DeadCoroutine());;
         }
-
-    }
+}
+IEnumerator DeadCoroutine()
+{
+    BossMusic.SetActive(false);
+    EndCutScene.Play();
+    Instantiate(DeadBoss,transform.position, Quaternion.identity);
+    yield return new WaitForSeconds(0);
+}
 }
