@@ -479,7 +479,7 @@ MonoBehaviour:
   SpellPrefab: {fileID: 6553327302211857769, guid: 41cad01bda56b124c91bc01e4a615729, type: 3}
   AttackBoxBoss: {fileID: 5453508942749946392}
   attackRadius: 1
-  speedBoss: 3.5
+  speedBoss: 2.5
   KDSpell: 0
   audioClips:
   - {fileID: 0}
