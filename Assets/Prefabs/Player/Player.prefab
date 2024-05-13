@@ -1049,7 +1049,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1174,6 +1174,7 @@ MonoBehaviour:
     m_Bits: 8
   CheckRadius: 0.1
   AttackHitBox: {fileID: 3353451811220352733}
+  isGrounded: 0
   isRoll: 0
   CanRoll: 1
   _rollPower: 6

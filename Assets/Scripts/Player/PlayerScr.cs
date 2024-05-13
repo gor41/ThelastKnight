@@ -18,7 +18,7 @@ public class PlayerScr : MonoBehaviour
     public float CheckRadius;
     private float _moveInput;
     public GameObject AttackHitBox;
-    private bool isGrounded = false;
+    public bool isGrounded = false;
     private bool isAttacked = false;
     private bool isAttackAndNoRoll = false;
     private bool faceRight = true;

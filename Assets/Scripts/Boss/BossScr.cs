@@ -66,7 +66,6 @@ public class BossScr : MonoBehaviour
         {
             animator.SetBool("IsAttackBoss",false);
         }
-        // Invoke("SpawnSpell",4);
     }
     public void SpawnSpell()
     {
