@@ -13,6 +13,7 @@ public class SceletonAI : MonoBehaviour
     public GameObject AttackBoxScelet;
     public Transform Startpoint;
     public Transform AttakcRadiusPointScelet;
+    private Rigidbody2D rb;
     
 
     private Animator animator;
@@ -21,12 +22,14 @@ public class SceletonAI : MonoBehaviour
 
     private bool isFlipped = false;
     private bool isCanAttack = false;
+    private bool isChill = false;
     private bool isAttack = false;
     public bool isKdAttack = false;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
     }
@@ -69,11 +72,13 @@ public class SceletonAI : MonoBehaviour
         }
         else if(Vector2.Distance(transform.position,player.position) > 5 && isAttack == false)
         {
+            animator.SetBool("isRunScl", true);
             transform.position = Vector2.MoveTowards(transform.position, tarhetStartPoint, SceletSpeed * Time.deltaTime);
         }
-        else if(Vector2.Distance(transform.position, tarhetStartPoint) > 0.1f && isAttack == false)
+        else if(Vector2.Distance(transform.position, tarhetStartPoint) < 0.1f && rb.velocity.x < 0.1f)
         {
             animator.SetBool("isRunScl", false);
+
         }
     }
     public void AttackScelet()
