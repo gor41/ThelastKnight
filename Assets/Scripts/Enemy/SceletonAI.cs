@@ -14,6 +14,7 @@ public class SceletonAI : MonoBehaviour
     public Transform Startpoint;
     public Transform AttakcRadiusPointScelet;
     private Rigidbody2D rb;
+    private EnemHealthScr enemHealthScr;
     
 
     private Animator animator;
@@ -28,6 +29,7 @@ public class SceletonAI : MonoBehaviour
 
     private void Awake()
     {
+        enemHealthScr = GetComponent<EnemHealthScr>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -59,6 +61,15 @@ public class SceletonAI : MonoBehaviour
             transform.localScale = flipped;
             transform.Rotate(0f, 180f, 0f);
             isFlipped = true;
+        }
+    }
+    public void WalkToPlayer()
+    {
+        Vector2 targetPlayer = new Vector2(player.position.x, transform.position.y);
+        if (Vector2.Distance(transform.position, player.position) < 5 && isAttack == false)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetPlayer, SceletSpeed * Time.deltaTime);
+            animator.SetBool("isRunScl", true);
         }
     }
     public void MoveScelet()
