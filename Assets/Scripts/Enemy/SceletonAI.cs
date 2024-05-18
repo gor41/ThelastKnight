@@ -85,18 +85,20 @@ public class SceletonAI : MonoBehaviour
         {
             animator.SetBool("isRunScl", true);
             transform.position = Vector2.MoveTowards(transform.position, tarhetStartPoint, SceletSpeed * Time.deltaTime);
+            isWalkToPlayer = false;
+            isWalkToStartPonit = true;
         }
         if(isWalkToStartPonit == true)
         {
         Vector3 flippedToStartPoint = transform.localScale;
         flippedToStartPoint.z *= -1f;
-        if (transform.position.x > player.position.x && isFlipped)
+        if (transform.position.x > tarhetStartPoint.x && isFlipped)
         {
             transform.localScale = flippedToStartPoint;
             transform.Rotate(0f, 180f, 0f);
             isFlipped = false;
         }
-        else if (transform.position.x < player.position.x && !isFlipped)
+        else if (transform.position.x < tarhetStartPoint.x && !isFlipped)
         {
             transform.localScale = flippedToStartPoint;
             transform.Rotate(0f, 180f, 0f);
