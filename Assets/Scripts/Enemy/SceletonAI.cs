@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,9 @@ public class SceletonAI : MonoBehaviour
     private bool isCanAttack = false;
     private bool isChill = false;
     private bool isAttack = false;
-    public bool isKdAttack = false;
+    private bool isKdAttack = false;
+    private bool isWalkToPlayer = false;
+    private bool isWalkToStartPonit = false;
 
     private void Awake()
     {
@@ -41,12 +44,23 @@ public class SceletonAI : MonoBehaviour
     }
     private void Update()
     {
-        LookToPlayer();
-        MoveScelet();
+        WalkToPlayer();
+        WalkToStartPoint();
         AttackScelet();
     }
-    public void LookToPlayer()
+    
+    public void WalkToPlayer()
     {
+        Vector2 targetPlayer = new Vector2(player.position.x, transform.position.y);
+        if (Vector2.Distance(transform.position, player.position) < 5 && isAttack == false)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetPlayer, SceletSpeed * Time.deltaTime);
+            animator.SetBool("isRunScl", true);
+            isWalkToPlayer = true;
+            isWalkToStartPonit = false;
+        }
+        if(isWalkToPlayer == true)
+        {
         Vector3 flipped = transform.localScale;
         flipped.z *= -1f;
 
@@ -62,34 +76,36 @@ public class SceletonAI : MonoBehaviour
             transform.Rotate(0f, 180f, 0f);
             isFlipped = true;
         }
-    }
-    public void WalkToPlayer()
-    {
-        Vector2 targetPlayer = new Vector2(player.position.x, transform.position.y);
-        if (Vector2.Distance(transform.position, player.position) < 5 && isAttack == false)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, targetPlayer, SceletSpeed * Time.deltaTime);
-            animator.SetBool("isRunScl", true);
         }
     }
-    public void MoveScelet()
+    public void WalkToStartPoint()
     {
-        Vector2 targetPlayer = new Vector2(player.position.x, transform.position.y);
         Vector2 tarhetStartPoint = new Vector2(Startpoint.position.x, transform.position.y);
-        if (Vector2.Distance(transform.position, player.position) < 5 && isAttack == false)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, targetPlayer, SceletSpeed * Time.deltaTime);
-            animator.SetBool("isRunScl", true);
-        }
-        else if(Vector2.Distance(transform.position,player.position) > 5 && isAttack == false)
+        if(Vector2.Distance(transform.position,player.position) > 5 && isAttack == false)
         {
             animator.SetBool("isRunScl", true);
             transform.position = Vector2.MoveTowards(transform.position, tarhetStartPoint, SceletSpeed * Time.deltaTime);
         }
-        else if(Vector2.Distance(transform.position, tarhetStartPoint) < 0.1f && rb.velocity.x < 0.1f)
+        if(isWalkToStartPonit == true)
+        {
+        Vector3 flippedToStartPoint = transform.localScale;
+        flippedToStartPoint.z *= -1f;
+        if (transform.position.x > player.position.x && isFlipped)
+        {
+            transform.localScale = flippedToStartPoint;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = false;
+        }
+        else if (transform.position.x < player.position.x && !isFlipped)
+        {
+            transform.localScale = flippedToStartPoint;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = true;
+        }
+        }
+        if(Vector2.Distance(transform.position,tarhetStartPoint)< 0.1f)
         {
             animator.SetBool("isRunScl", false);
-
         }
     }
     public void AttackScelet()
