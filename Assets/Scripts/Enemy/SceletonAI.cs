@@ -24,7 +24,6 @@ public class SceletonAI : MonoBehaviour
 
     private bool isFlipped = false;
     private bool isCanAttack = false;
-    private bool isChill = false;
     private bool isAttack = false;
     private bool isKdAttack = false;
     private bool isWalkToPlayer = false;
@@ -59,7 +58,7 @@ public class SceletonAI : MonoBehaviour
             isWalkToPlayer = true;
             isWalkToStartPonit = false;
         }
-        if(isWalkToPlayer == true)
+        if(isWalkToPlayer == true  && isAttack == false)
         {
         Vector3 flipped = transform.localScale;
         flipped.z *= -1f;
@@ -88,7 +87,7 @@ public class SceletonAI : MonoBehaviour
             isWalkToPlayer = false;
             isWalkToStartPonit = true;
         }
-        if(isWalkToStartPonit == true)
+        if(isWalkToStartPonit == true && isAttack == false)
         {
         Vector3 flippedToStartPoint = transform.localScale;
         flippedToStartPoint.z *= -1f;
@@ -117,29 +116,24 @@ public class SceletonAI : MonoBehaviour
         {
             StartCoroutine(AttackSceletCoroutine());
             StartCoroutine(KDAttack());
-            animator.SetBool("isAttackScl", true);
         }
-        else
-        {
-            animator.SetBool("isAttackScl", false);
-        }
-
-
-
-
     }
     IEnumerator AttackSceletCoroutine()
     {
+        animator.SetBool("isAttackScl", true);
+        yield return new WaitForSeconds(0.2f);
         AttackBoxScelet.SetActive(true);
         isAttack = true;
         yield return new WaitForSeconds(0.2f);
         AttackBoxScelet.SetActive(false);
         isAttack = false;
+        yield return new WaitForSeconds(0.1f);
+        animator.SetBool("isAttackScl",false);
     }
     IEnumerator KDAttack()
     {
         isKdAttack = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         isKdAttack = false;
 
     }
