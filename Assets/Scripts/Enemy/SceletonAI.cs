@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SceletonAI : MonoBehaviour
@@ -8,11 +9,15 @@ public class SceletonAI : MonoBehaviour
     [Header("Floats")]
     public float SceletSpeed;
     public float AttackRadiusScelet;
+    public float CheckRadiusScl;
 
     [Header("GameObjects and other")]
     public LayerMask PlayerIsLayer;
+    public LayerMask WhatisGroundScl;
     public GameObject AttackBoxScelet;
+    public GameObject DaedScl;
     public Transform Startpoint;
+    public Transform feetPosScl;
     public Transform AttakcRadiusPointScelet;
     private Rigidbody2D rb;
     private EnemHealthScr enemHealthScr;
@@ -28,6 +33,8 @@ public class SceletonAI : MonoBehaviour
     private bool isKdAttack = false;
     private bool isWalkToPlayer = false;
     private bool isWalkToStartPonit = false;
+    public bool isChill = false;
+    private bool isGroundedScl = false;
 
     private void Awake()
     {
@@ -46,13 +53,22 @@ public class SceletonAI : MonoBehaviour
         WalkToPlayer();
         WalkToStartPoint();
         AttackScelet();
+        isGroundCheck();
+        CheckGroundForward();
     }
-    
+    public void isGroundCheck()
+    {
+        isGroundedScl = Physics2D.OverlapCircle(feetPosScl.position,CheckRadiusScl,WhatisGroundScl);
+        if(isGroundedScl == false)
+        {
+            animator.SetBool("isRunScl", false);
+        }
+    }
     public void WalkToPlayer()
     {
         Vector2 targetPlayer = new Vector2(player.position.x, transform.position.y);
-        if (Vector2.Distance(transform.position, player.position) < 5 && isAttack == false)
-        {
+        if (Vector2.Distance(transform.position, player.position) < 4  && isAttack == false && isGroundedScl == true && isChill == false) 
+        { 
             transform.position = Vector2.MoveTowards(transform.position, targetPlayer, SceletSpeed * Time.deltaTime);
             animator.SetBool("isRunScl", true);
             isWalkToPlayer = true;
@@ -80,7 +96,7 @@ public class SceletonAI : MonoBehaviour
     public void WalkToStartPoint()
     {
         Vector2 tarhetStartPoint = new Vector2(Startpoint.position.x, transform.position.y);
-        if(Vector2.Distance(transform.position,player.position) > 5 && isAttack == false)
+        if(Vector2.Distance(transform.position,player.position) > 4 && isAttack == false && isGroundedScl == true || isChill == true)
         {
             animator.SetBool("isRunScl", true);
             transform.position = Vector2.MoveTowards(transform.position, tarhetStartPoint, SceletSpeed * Time.deltaTime);
@@ -107,6 +123,15 @@ public class SceletonAI : MonoBehaviour
         if(Vector2.Distance(transform.position,tarhetStartPoint)< 0.1f)
         {
             animator.SetBool("isRunScl", false);
+            isChill = false;
+        }
+    }
+    public void CheckGroundForward()
+    {
+         RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position,transform.right * -1,0.5f,LayerMask.GetMask("Ground"));
+        if(raycastHit2D.collider != null)
+        {
+            isChill = true;
         }
     }
     public void AttackScelet()
@@ -120,14 +145,14 @@ public class SceletonAI : MonoBehaviour
     }
     IEnumerator AttackSceletCoroutine()
     {
+        isAttack = true;
         animator.SetBool("isAttackScl", true);
         yield return new WaitForSeconds(0.2f);
         AttackBoxScelet.SetActive(true);
-        isAttack = true;
         yield return new WaitForSeconds(0.2f);
         AttackBoxScelet.SetActive(false);
-        isAttack = false;
         yield return new WaitForSeconds(0.1f);
+        isAttack = false;
         animator.SetBool("isAttackScl",false);
     }
     IEnumerator KDAttack()
@@ -135,7 +160,10 @@ public class SceletonAI : MonoBehaviour
         isKdAttack = true;
         yield return new WaitForSeconds(1f);
         isKdAttack = false;
-
     }
-
+    IEnumerator StartDeadScl()
+    {
+        Instantiate(DaedScl,transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(0);
+    }
 }

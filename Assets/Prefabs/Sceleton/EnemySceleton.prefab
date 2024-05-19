@@ -123,6 +123,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1346180611317538365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5255402885639531165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 930539500478843571}
+  m_Layer: 8
+  m_Name: feetPosScl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &930539500478843571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5255402885639531165}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.178, y: -0.269, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1346180611317538365}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8595232886984689181
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +191,7 @@ Transform:
   m_Children:
   - {fileID: 7016465003331056726}
   - {fileID: 7879132154956041890}
+  - {fileID: 930539500478843571}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &131633623297514652
@@ -227,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentEnemyHealth: 0
-  _maxEnemyHealth: 200
+  _maxEnemyHealth: 40
 --- !u!95 &4517865716273431576
 Animator:
   serializedVersion: 5
@@ -308,11 +340,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceletSpeed: 2
   AttackRadiusScelet: 1
+  CheckRadiusScl: 0.2
   PlayerIsLayer:
     serializedVersion: 2
     m_Bits: 64
+  WhatisGroundScl:
+    serializedVersion: 2
+    m_Bits: 8
   AttackBoxScelet: {fileID: 2667332978540343274}
+  DaedScl: {fileID: 1022709713417978042, guid: 0d25174befe64f14b934330909cdae41, type: 3}
   Startpoint: {fileID: 0}
+  feetPosScl: {fileID: 930539500478843571}
   AttakcRadiusPointScelet: {fileID: 7879132154956041890}
 --- !u!50 &9130085772093633679
 Rigidbody2D:
