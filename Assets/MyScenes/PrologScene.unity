@@ -20741,6 +20741,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6689691740023301801, guid: 6ccd4d5abf44b514cbfb50659ab8048f, type: 3}
+      propertyPath: _maxEnemyHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7170743501499345551, guid: 6ccd4d5abf44b514cbfb50659ab8048f, type: 3}
       propertyPath: BossMusic
       value: 

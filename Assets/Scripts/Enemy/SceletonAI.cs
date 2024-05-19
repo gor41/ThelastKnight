@@ -41,15 +41,13 @@ public class SceletonAI : MonoBehaviour
         enemHealthScr = GetComponent<EnemHealthScr>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-
     }
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     private void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         WalkToPlayer();
         WalkToStartPoint();
         AttackScelet();
