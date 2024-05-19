@@ -55,6 +55,7 @@ public class SceletonAI : MonoBehaviour
         AttackScelet();
         isGroundCheck();
         CheckGroundForward();
+        CheckIsDead();
     }
     public void isGroundCheck()
     {
@@ -141,6 +142,13 @@ public class SceletonAI : MonoBehaviour
         {
             StartCoroutine(AttackSceletCoroutine());
             StartCoroutine(KDAttack());
+        }
+    }
+    public void CheckIsDead()
+    {
+        if(enemHealthScr._currentEnemyHealth<= 0)
+        {
+            StartCoroutine(StartDeadScl());
         }
     }
     IEnumerator AttackSceletCoroutine()

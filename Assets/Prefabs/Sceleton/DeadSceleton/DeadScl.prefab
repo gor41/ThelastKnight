@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7893718201442629915}
   - component: {fileID: 3393762135886302951}
   - component: {fileID: 890291218898099860}
-  - component: {fileID: 7992186710665954292}
   m_Layer: 0
   m_Name: DeadScl
   m_TagString: Untagged
@@ -29,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.9755573, y: -2.726, z: 0.017876625}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -107,16 +106,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7992186710665954292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022709713417978042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9941a2660977a9439225780336a0c3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeToDestroy: 0.5
