@@ -646,6 +646,34 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2728186650606572890, guid: 2330713baecd27c458f7de379aa2218c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728186650606572890, guid: 2330713baecd27c458f7de379aa2218c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728186650606572890, guid: 2330713baecd27c458f7de379aa2218c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1450480424}
+    - target: {fileID: 2728186650606572890, guid: 2330713baecd27c458f7de379aa2218c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728186650606572890, guid: 2330713baecd27c458f7de379aa2218c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Switch
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728186650606572890, guid: 2330713baecd27c458f7de379aa2218c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SwitchScene, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728186650606572890, guid: 2330713baecd27c458f7de379aa2218c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3353451811220352733, guid: 2330713baecd27c458f7de379aa2218c, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -5802,6 +5830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1004684168}
   - component: {fileID: 1004684167}
+  - component: {fileID: 1004684169}
   m_Layer: 0
   m_Name: ColliderDead
   m_TagString: Untagged
@@ -5869,6 +5898,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1004684169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004684166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2106d49defb226e42af1123cfacb7778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1134921140
 GameObject:
   m_ObjectHideFlags: 0
@@ -6346,6 +6387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1450480423}
   - component: {fileID: 1450480422}
+  - component: {fileID: 1450480424}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -6380,6 +6422,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1450480424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450480421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092dcb65225d2e446ac348d9e21804fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1475633540
 GameObject:
   m_ObjectHideFlags: 0
