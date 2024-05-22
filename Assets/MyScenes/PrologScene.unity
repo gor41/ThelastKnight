@@ -1520,7 +1520,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.581318, y: -2.3367095, z: -10}
+  m_LocalPosition: {x: 6.5883884, y: -2.3367095, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2559,6 +2559,8 @@ PlayableDirector:
     value: {fileID: 519420033}
   - key: {fileID: 5172548493580083828, guid: 5d3c714b1274a0e4696e52cc9ef76db3, type: 2}
     value: {fileID: 1666284799}
+  - key: {fileID: 6766951259703174865, guid: 5d3c714b1274a0e4696e52cc9ef76db3, type: 2}
+    value: {fileID: 992534729}
   m_ExposedReferences:
     m_References:
     - 3a2ae3d0ba679bf4183f82618f0b18da: {fileID: 1257571024}
