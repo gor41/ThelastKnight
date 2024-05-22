@@ -10,6 +10,7 @@ public class HealthPlayer : MonoBehaviour
     [SerializeField] public float _currentHealthPlayer = 100f;
     [SerializeField] private float _maxCurrentHealthPlayer = 100f;
     public TextMeshProUGUI TextHp;
+    public Pause pause;
     public GameObject PanelGameOver;
     public UnityEngine.UI.Image image;
     private Animator animator;
@@ -62,6 +63,7 @@ public class HealthPlayer : MonoBehaviour
     {
         PlayerScr playerScr = gameObject.GetComponent<PlayerScr>();
         playerScr.enabled = false;
+        pause.enabled = false;
         rigidbody2.bodyType = RigidbodyType2D.Static;
         collider2d.enabled = false;
         animator.SetTrigger("IsDead");

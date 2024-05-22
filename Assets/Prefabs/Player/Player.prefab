@@ -1665,6 +1665,7 @@ MonoBehaviour:
   _currentHealthPlayer: 10
   _maxCurrentHealthPlayer: 100
   TextHp: {fileID: 1756487530606120028}
+  pause: {fileID: 5081469245515759312}
   PanelGameOver: {fileID: 4563830113564202457}
   image: {fileID: 5461956263066626861}
   isTakeHit: 0

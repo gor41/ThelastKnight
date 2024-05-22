@@ -10,4 +10,8 @@ public class SwitchScene : MonoBehaviour
         SceneManager.LoadScene(num);
         Time.timeScale = 1f;
     }
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
