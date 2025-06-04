@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Optimization : MonoBehaviour
 {
-    private void Awake() {
-        Application.targetFrameRate = 75; 
+    private void Awake() 
+    {
+        Application.targetFrameRate = 60;
     }
 
 }  

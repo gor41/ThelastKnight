@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentEnemyHealth: 0
-  _maxEnemyHealth: 400
+  _maxEnemyHealth: 350
 --- !u!114 &3510025292293091446
 MonoBehaviour:
   m_ObjectHideFlags: 0

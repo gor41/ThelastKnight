@@ -17,6 +17,7 @@ public class SceneAsync : MonoBehaviour
     private IEnumerator LoadNextScene()
     {
         AsyncOperation oper = SceneManager.LoadSceneAsync(Scene);
+        DataConroller.checkPointIndex = 0;
 
         while (!oper.isDone) 
         { 
